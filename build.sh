@@ -49,78 +49,20 @@ ldflags="\
 "
 
 FetchWebRolling() {
-  # 打印函数执行信息和目标仓库
-  echo "========================================"
-  echo "执行 FetchWebRolling：拉取前端 rolling 标签资源"
-  echo "目标前端仓库：$frontendRepo"
-  echo "请求的 GitHub API URL：https://api.github.com/repos/$frontendRepo/releases/tags/rolling"
-  echo "========================================"
-
-  # 构造 curl 命令（带详细日志）
-  echo "=== 开始请求 rolling 标签的 Release 信息 ==="
-  pre_release_json=$(eval "curl -fvL --max-time 2 $githubAuthArgs -H \"Accept: application/vnd.github.v3+json\" \"https://api.github.com/repos/$frontendRepo/releases/tags/rolling\" 2>&1")
-  
-  # 检查 curl 执行结果
-  if [ $? -ne 0 ]; then
-    echo "========================================"
-    echo "❌ 拉取 rolling 标签信息失败！"
-    echo "请求 URL：https://api.github.com/repos/$frontendRepo/releases/tags/rolling"
-    echo "curl 详细日志："
-    echo "$pre_release_json"
-    echo "========================================"
-    exit 1
-  fi
-
-  # 解析资产列表并打印
+  pre_release_json=$(eval "curl -fsSL --max-time 2 $githubAuthArgs -H \"Accept: application/vnd.github.v3+json\" \"https://api.github.com/repos/$frontendRepo/releases/tags/rolling\"")
   pre_release_assets=$(echo "$pre_release_json" | jq -r '.assets[].browser_download_url')
-  echo "=== 解析到的 rolling 标签资产列表： ==="
-  echo "$pre_release_assets"
-
-  # 筛选目标 tar.gz 文件（rolling 版本无 lite）
+  
+  # There is no lite for rolling
   pre_release_tar_url=$(echo "$pre_release_assets" | grep "openlist-frontend-dist" | grep -v "lite" | grep "\.tar\.gz$")
 
-  # 检查是否找到有效下载链接
-  if [ -z "$pre_release_tar_url" ]; then
-    echo "========================================"
-    echo "❌ 未找到符合条件的前端压缩包！"
-    echo "筛选条件：含 'openlist-frontend-dist'、无 'lite'、以 '.tar.gz' 结尾"
-    echo "请检查该仓库的 rolling 标签 Release 资产是否正确"
-    echo "========================================"
-    exit 1
-  fi
-
-  # 下载前端压缩包（带详细日志）
-  echo "=== 开始下载前端压缩包：$pre_release_tar_url ==="
-  curl -fvL -o dist.tar.gz "$pre_release_tar_url" 2>&1
-  
-  if [ $? -ne 0 ]; then
-    echo "========================================"
-    echo "❌ 压缩包下载失败！"
-    echo "下载 URL：$pre_release_tar_url"
-    echo "请手动访问该 URL 确认是否存在"
-    echo "========================================"
-    exit 1
-  fi
-
-  # 解压并清理
-  echo "=== 解压前端资源到 public/dist ==="
+  curl -fsSL "$pre_release_tar_url" -o dist.tar.gz
   rm -rf public/dist && mkdir -p public/dist
-  tar -zxvf dist.tar.gz -C public/dist 2>&1
+  tar -zxvf dist.tar.gz -C public/dist
   rm -rf dist.tar.gz
-  
-  echo "=== FetchWebRolling 执行完成 ==="
 }
 
 FetchWebRelease() {
-  # 新增：打印当前请求的 URL（方便日志排查）
-  echo "=== 正在拉取前端 Release 信息：https://api.github.com/repos/$frontendRepo/releases/latest ==="
-  # 修改 curl：移除 -s（静默），添加 -v（详细日志），保留 -f（失败返回非零码）
-  release_json=$(eval "curl -fvL --max-time 2 $githubAuthArgs -H \"Accept: application/vnd.github.v3+json\" \"https://api.github.com/repos/$frontendRepo/releases/latest\"")
-  # 新增：检查 curl 是否成功，失败时打印错误
-  if [ $? -ne 0 ]; then
-    echo "=== 拉取 Release 信息失败！URL：https://api.github.com/repos/$frontendRepo/releases/latest ==="
-    exit 1
-  fi
+  release_json=$(eval "curl -fsSL --max-time 2 $githubAuthArgs -H \"Accept: application/vnd.github.v3+json\" \"https://api.github.com/repos/$frontendRepo/releases/latest\"")
   release_assets=$(echo "$release_json" | jq -r '.assets[].browser_download_url')
   
   if [ "$useLite" = true ]; then
@@ -284,7 +226,7 @@ BuildRelease() {
   # cp ./"$appName"-windows-amd64.exe ./"$appName"-windows-amd64-upx.exe
   # upx -9 ./"$appName"-windows-amd64-upx.exe
   mv "$appName"-* build
-  
+
   # Build LoongArch with glibc (both old world abi1.0 and new world abi2.0)
   # Separate from musl builds to avoid cache conflicts
   BuildLoongGLIBC ./build/$appName-linux-loong64-abi1.0 abi1.0
