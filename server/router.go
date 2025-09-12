@@ -16,6 +16,7 @@ import (
 )
 
 func Init(e *gin.Engine) {
+	e.ContextWithFallback = true
 	if !utils.SliceContains([]string{"", "/"}, conf.URL.Path) {
 		e.GET("/", func(c *gin.Context) {
 			c.Redirect(302, conf.URL.Path)
@@ -31,8 +32,8 @@ func Init(e *gin.Engine) {
 	})
 	g.GET("/favicon.ico", handles.Favicon)
 	g.GET("/robots.txt", handles.Robots)
-	g.GET("/i/:link_name", handles.Plist)
 	g.GET("/manifest.json", static.ManifestJSON)
+	g.GET("/i/:link_name", handles.Plist)
 	common.SecretKey = []byte(conf.Conf.JwtSecret)
 	g.Use(middlewares.StoragesLoaded)
 	if conf.Conf.MaxConnections > 0 {
@@ -161,8 +162,8 @@ func admin(g *gin.RouterGroup) {
 	setting.POST("/set_115_open", handles.Set115Open)
 	setting.POST("/set_pikpak", handles.SetPikPak)
 	setting.POST("/set_thunder", handles.SetThunder)
-	setting.POST("/set_thunder_browser", handles.SetThunderBrowser)
 	setting.POST("/set_thunderx", handles.SetThunderX)
+	setting.POST("/set_thunder_browser", handles.SetThunderBrowser)
 
 	// retain /admin/task API to ensure compatibility with legacy automation scripts
 	_task(g.Group("/task"))

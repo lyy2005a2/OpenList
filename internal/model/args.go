@@ -99,7 +99,7 @@ type SharingLinkArgs struct {
 
 type RangeReaderIF interface {
 	RangeRead(ctx context.Context, httpRange http_range.Range) (io.ReadCloser, error)
-	}
+}
 
 type RangeReadCloserIF interface {
 	RangeReaderIF

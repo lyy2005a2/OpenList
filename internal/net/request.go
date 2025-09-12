@@ -561,7 +561,7 @@ func DefaultHttpRequestFunc(ctx context.Context, params *HttpRequestParams) (*ht
 	return RequestHttp(ctx, "GET", header, params.URL)
 }
 
-	func GetRangeReaderHttpRequestFunc(rangeReader model.RangeReaderIF) HttpRequestFunc {
+func GetRangeReaderHttpRequestFunc(rangeReader model.RangeReaderIF) HttpRequestFunc {
 	return func(ctx context.Context, params *HttpRequestParams) (*http.Response, error) {
 		rc, err := rangeReader.RangeRead(ctx, params.Range)
 		if err != nil {

@@ -38,11 +38,9 @@ func OpenDownload(ctx context.Context, reqPath string, offset int64) (*FileDownl
 	}
 
 	// directly use proxy
-	header := *(ctx.Value("proxy_header").(*http.Header))
-	link, obj, err := fs.Link(ctx, reqPath, model.LinkArgs{
-		IP:     ctx.Value("client_ip").(string),
-		Header: header,
-	})
+	header, _ := ctx.Value(conf.ProxyHeaderKey).(http.Header)
+	ip, _ := ctx.Value(conf.ClientIPKey).(string)
+	link, obj, err := fs.Link(ctx, reqPath, model.LinkArgs{IP: ip, Header: header})
 	if err != nil {
 		return nil, err
 	}
