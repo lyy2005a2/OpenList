@@ -100,7 +100,7 @@ func InitialSettings() []model.SettingItem {
 		//{Key: conf.ApiUrl, Value: "", Type: conf.TypeString, Group: model.SITE},
 		//{Key: conf.BasePath, Value: "", Type: conf.TypeString, Group: model.SITE},
 		{Key: conf.SiteTitle, Value: "龙氏云盘", Type: conf.TypeString, Group: model.SITE},
-		{Key: conf.Announcement, Value: "### 欢迎访问龙氏云盘魔改版！！\nhttps://github.com/lyy2005a2/Long-Cloud", Type: conf.TypeText, Group: model.SITE},
+		{Key: conf.Announcement, Value: "### 欢迎访问龙氏云盘魔改版！欲了解最新动态、贡献代码或提交建议和问题，请访问我们的 [魔改项目仓库]\nhttps://github.com/lyy2005a2/Long-Cloud", Type: conf.TypeText, Group: model.SITE},
 		{Key: "pagination_type", Value: "all", Type: conf.TypeSelect, Options: "all,pagination,load_more,auto_load_more", Group: model.SITE},
 		{Key: "default_page_size", Value: "30", Type: conf.TypeNumber, Group: model.SITE},
 		{Key: conf.AllowIndexed, Value: "false", Type: conf.TypeBool, Group: model.SITE},
