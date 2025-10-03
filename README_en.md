@@ -95,6 +95,10 @@ Thank you for your support and understanding of the OpenList project.
 
 - (11)Update time: September 8, 2025, 11:20 PM Version: v4.1.2
 
+- (12)Update time: September 19, 2025, 10:21 PM, version: v4.1.3
+
+- (13)Update time: October 3, 2025, 2:10 PM, version: v4.1.4
+
 
 ## Disclaimer
 
