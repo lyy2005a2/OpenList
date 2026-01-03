@@ -69,7 +69,13 @@ Thank you for your support and understanding of the OpenList project.
 
 - Now I will officially go to the openlist project and continue to start my own magic change, each modification - compilation has a time stamp, to provide you with my latest magic change version!!
 
+- Unknowingly, it's now 2026. Wishing everyone a happy 2026! Visit my main website for a surprise!
+
+- The 2026 update will include two major versions updated together. Just so you know!
+
 ## Current Version:
+
+#### 2025 Iteration:
 
 - Alist Hazard Version: 3.45.0 is now officially discontinued "June 11th, 2025"
 
@@ -101,8 +107,11 @@ Thank you for your support and understanding of the OpenList project.
 
 - (14)Update time: October 22, 2025, 1:50 PM Version: v4.1.5
 
-- (15)Update time: See signature  Version: v4.1.7 (v4.1.6 updated at the same time)
+- (15)Update Time: November 11, 2025, 4:44 PM, Version: v4.1.7
 
+#### New Version for 2026:
+
+- (16)Update Time: See signature (dynamically updated)(v4.1.9)
 
 ## Disclaimer
 
