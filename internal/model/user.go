@@ -20,7 +20,15 @@ const (
 	ADMIN
 )
 
-const StaticHashSalt = "https://github.com/alist-org/alist"
+const (
+	StaticHashSalt = "https://github.com/alist-org/alist"
+
+	InvalidUsernameOrPassword = "用户名或密码错误!"
+	Invalid2FACode            = "无效的 2FA 代码!"
+	TooManyAttempts           = "登录失败的次数过多，请稍后重试!"
+	GuestCannotUpdateProfile  = "来宾用户无法更新配置文件!"
+	GuestCannotGenerate2FA    = "来宾用户无法生成 2FA 代码!"
+)
 
 var LoginCache = cache.NewMemCache[int]()
 
