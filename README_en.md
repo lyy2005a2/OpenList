@@ -113,7 +113,9 @@ Thank you for your support and understanding of the OpenList project.
 
 - (16)Update time: January 3, 2026, 5:51 PM, version: v4.1.9
 
-- (17)Update time: Please refer to the signature (dynamic update) (v4.1.10)
+- (17)Update time: February 6, 2026, 12:06 PM, version: v4.1.10
+
+- (18)Update time: Please refer to the signature (dynamic update) (v4.2.1)
 
 ## Disclaimer
 
