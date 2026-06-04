@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="80px" alt="logo" src="https://long2024.cn/image/logo-Y.png"/></a>
+  <img src="https://long2024.cn/image/logo-Y.png" width="80" height="80" alt="logo" /></a>
   <p><em>It has now been renamed from Alist to OpenList, which belongs to the magic version of OpenList from "li-peifeng".</em></p>
 <div>
   <a href="https://github.com/lyy2005a2/OpenList/actions?query=workflow%3ABuild">

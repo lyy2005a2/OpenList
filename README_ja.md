@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="100px" alt="logo" src="https://long2024.cn/image/logo-Y.png"/></a>
+  <img src="https://long2024.cn/image/logo-Y.png" width="80" height="80" alt="logo" /></a>
   <p><em>🗂複数のストレージをサポートするファイルリストプログラムで、Gin と SolidJS を使用し、AList プロジェクトをフォークして開発されました。</em></p>
 <div>
   <a href="https://github.com/lyy2005a2/OpenList/actions?query=workflow%3ABuild">

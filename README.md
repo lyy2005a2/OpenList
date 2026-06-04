@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="80px" alt="logo" src="https://long2024.cn/image/logo-Y.png"/></a>
+  <img src="https://long2024.cn/image/logo-Y.png" width="80" height="80" alt="logo" /></a>
   <p><em>现在从Alist改名为OpenList，属于"li-peifeng"的魔改版OpenList。</em></p>
 <div>
   <a href="https://github.com/lyy2005a2/OpenList/actions?query=workflow%3ABuild">
