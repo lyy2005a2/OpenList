@@ -14,13 +14,13 @@ import (
 func S3(g *gin.RouterGroup) {
 	if !conf.Conf.S3.Enable {
 		g.Any("/*path", func(c *gin.Context) {
-			common.ErrorStrResp(c, "S3 server is not enabled", 403)
+			common.ErrorStrResp(c, "S3 服务未启用", 403)
 		})
 		return
 	}
 	if conf.Conf.S3.Port != -1 {
 		g.Any("/*path", func(c *gin.Context) {
-			common.ErrorStrResp(c, "S3 server bound to single port", 403)
+			common.ErrorStrResp(c, "S3 服务绑定到单一端口", 403)
 		})
 		return
 	}

@@ -40,7 +40,7 @@ func CreateMeta(c *gin.Context) {
 	}
 	r, err := validHide(req.Hide)
 	if err != nil {
-		common.ErrorStrResp(c, fmt.Sprintf("%s is illegal: %s", r, err.Error()), 400)
+		common.ErrorStrResp(c, fmt.Sprintf("%s 非法：%s", r, err.Error()), 400)
 		return
 	}
 	if err := op.CreateMeta(&req); err != nil {
@@ -58,7 +58,7 @@ func UpdateMeta(c *gin.Context) {
 	}
 	r, err := validHide(req.Hide)
 	if err != nil {
-		common.ErrorStrResp(c, fmt.Sprintf("%s is illegal: %s", r, err.Error()), 400)
+		common.ErrorStrResp(c, fmt.Sprintf("%s 非法：%s", r, err.Error()), 400)
 		return
 	}
 	if err := op.UpdateMeta(&req); err != nil {
