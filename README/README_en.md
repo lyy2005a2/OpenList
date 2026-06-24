@@ -17,7 +17,7 @@
 ---
 ---
 
- [中文](./README.md) | English | [日本語](./README_ja.md) |
+ [中文](../README.md) | English | [日本語](./README_ja.md) |
 
 ---
 
